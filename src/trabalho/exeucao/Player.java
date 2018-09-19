@@ -5,6 +5,10 @@ import java.security.InvalidParameterException;
 import problema1.AIFFSuperPlayer;
 import problema1.WAVPlayer;
 import problema1.wmaPlay;
+import trabalho.classes.AiffFormatoAudio;
+import trabalho.classes.WavFormatoAudio;
+import trabalho.classes.WmaFormatoAudio;
+import trabalho.interfaces.FormatoAudio;
 
 public class Player {
 
@@ -22,29 +26,52 @@ public class Player {
 //		wma.play();
 		
 		
-		String nomeArquivo = "musica.wma";		
+		String nomeArquivo = "musica.wav";		
 		String retorno = (nomeArquivo.lastIndexOf(".") == 0) ? ""
 					: nomeArquivo.substring(nomeArquivo.lastIndexOf(".") + 1);
 		
+		
+		
+		
+		
+		FormatoAudio formato = null;
 		switch(retorno) {
 		case "aiff":
-			AIFFSuperPlayer aif = new AIFFSuperPlayer("qualquerai.aiff");
-			aif.play();
+			formato = new AiffFormatoAudio();
 		break;
 		case "wav":
-			WAVPlayer wav = new WAVPlayer(nomeArquivo);
-			wav.play();
+			formato = new WavFormatoAudio();
 			break;
 		case "wma":
-			wmaPlay wma = new wmaPlay();
-			wma.setFile(nomeArquivo);
-			wma.open();
-			wma.setLocation(0);
-			wma.play();
+			formato = new WmaFormatoAudio();
 		break;
 		default:
 			throw new InvalidParameterException("Formato de arquivo inválido.");
 		}
+		formato.abrir(nomeArquivo);
+		formato.reproduzir();
+		
+		
+		
+//		switch(retorno) {
+//		case "aiff":
+//			AIFFSuperPlayer aif = new AIFFSuperPlayer("qualquerai.aiff");
+//			aif.play();
+//		break;
+//		case "wav":
+//			WAVPlayer wav = new WAVPlayer(nomeArquivo);
+//			wav.play();
+//			break;
+//		case "wma":
+//			wmaPlay wma = new wmaPlay();
+//			wma.setFile(nomeArquivo);
+//			wma.open();
+//			wma.setLocation(0);
+//			wma.play();
+//		break;
+//		default:
+//			throw new InvalidParameterException("Formato de arquivo inválido.");
+//		}
 		
 		
 	}

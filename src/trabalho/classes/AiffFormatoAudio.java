@@ -2,7 +2,7 @@ package trabalho.classes;
 
 import trabalho.interfaces.FormatoAudio;
 
-public class FormatoAudioManipulacao implements FormatoAudio {
+public class AiffFormatoAudio implements FormatoAudio {
 
 	@Override
 	public void abrir(String arquivo) {
