@@ -6,46 +6,44 @@ import trabalho.interfaces.FormatoAudio;
 public class WavFormatoAudio implements FormatoAudio {
 	
 	private WAVPlayer wav;
+	private String arquivo;
 	
 	@Override
 	public void abrir(String arquivo) {
 		wav = new WAVPlayer(arquivo);
+		this.arquivo = arquivo;
 	}
 
 	@Override
 	public void reproduzir() {
 		wav.play();
-
 	}
 
 	@Override
 	public void pausar() {
-		// TODO Auto-generated method stub
-
+		wav.stop();
 	}
 
 	@Override
 	public void parar() {
-		// TODO Auto-generated method stub
-
+		wav.stop();
+		wav = new WAVPlayer(arquivo);
 	}
 
 	@Override
 	public void avancar(int segundos) {
-		// TODO Auto-generated method stub
-
+		wav.forward(segundos);
 	}
 
 	@Override
 	public void retornar(int segundos) {
-		// TODO Auto-generated method stub
-
+		wav.reward(segundos);
 	}
 
 	@Override
 	public void liberar() {
-		// TODO Auto-generated method stub
-
+		wav.stop();
+		wav = null;
 	}
 
 }

@@ -1,49 +1,51 @@
 package trabalho.classes;
 
+import problema1.AIFFSuperPlayer;
 import trabalho.interfaces.FormatoAudio;
 
 public class AiffFormatoAudio implements FormatoAudio {
+	
+	private AIFFSuperPlayer aif;
 
 	@Override
 	public void abrir(String arquivo) {
-		// TODO Auto-generated method stub
-
+		aif = new AIFFSuperPlayer(arquivo);
 	}
 
 	@Override
 	public void reproduzir() {
-		// TODO Auto-generated method stub
-
+		aif.play();
 	}
 
 	@Override
 	public void pausar() {
-		// TODO Auto-generated method stub
-
+		aif.pause();
 	}
 
 	@Override
 	public void parar() {
-		// TODO Auto-generated method stub
-
+		aif.stop();
+		aif.setCursor(0);
 	}
 
 	@Override
 	public void avancar(int segundos) {
-		// TODO Auto-generated method stub
-
+		int atual = aif.pause();
+		aif.setCursor(atual + segundos);
+		aif.play();
 	}
 
 	@Override
 	public void retornar(int segundos) {
-		// TODO Auto-generated method stub
-
+		int atual = aif.pause();
+		aif.setCursor(atual - segundos);
+		aif.play();
 	}
 
 	@Override
 	public void liberar() {
-		// TODO Auto-generated method stub
-
+		aif.stop();
+		aif.release();
 	}
 
 }

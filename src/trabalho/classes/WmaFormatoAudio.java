@@ -9,10 +9,10 @@ public class WmaFormatoAudio implements FormatoAudio {
 
 	@Override
 	public void abrir(String arquivo) {
-		wmaPlay wma = new wmaPlay();
+		wma = new wmaPlay();
 		wma.setFile(arquivo);
-		wma.setLocation(0);
 		wma.open();
+		wma.setLocation(0);
 	}
 
 	@Override
@@ -22,30 +22,31 @@ public class WmaFormatoAudio implements FormatoAudio {
 
 	@Override
 	public void pausar() {
-		// TODO Auto-generated method stub
-
+		wma.stop();
 	}
 
 	@Override
 	public void parar() {
-		// TODO Auto-generated method stub
-
+		wma.stop();
+		wma.setLocation(0);
 	}
 
 	@Override
 	public void avancar(int segundos) {
-		wma.setLocation(segundos);
+		int atual = wma.getLocation();
+		wma.setLocation(atual + segundos);
 	}
 
 	@Override
 	public void retornar(int segundos) {
-		wma.setLocation(segundos);
+		int atual = wma.getLocation();
+		wma.setLocation(atual - segundos);
 	}
 
 	@Override
 	public void liberar() {
-		// TODO Auto-generated method stub
-
+		wma.stop();
+		wma = null;
 	}
 
 }
