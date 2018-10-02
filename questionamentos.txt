@@ -1,0 +1,9 @@
+1) As classes que estão implementado a FormatoAudio. Está dependente da classe AudioFactory para inicializar-la quando o usuário informa o tipo do formado do audio.
+
+2) As linhas de código em cada método atende a um único proposito, cada método tem apenas um motivo para ser mudado. Assim como as linhas de código da classe estão atendendo ao objetivo da classe. Nas classes que está sendo implementado o FormatoAudio não está sendo usando nenhum comando de seleção, foi utilizada outra classe chamada AudioFactory, nessa classe está sendo usado um switch para verificar qual o formado do audio que o usuário está reproduzindo.
+
+3) A estrutura está simples para mais classes sejam padronizadas pela interface FormatoAudio, para implementar as classes MP3DJ e AACPlayer será necessário criar mais duas classes que implementem a interface FormatoAudio e dentro dos métodos serão implementados os métodos das classes que serão adicionadas.
+
+4) Para o desenvolvedor utilizar os dois métodos solicitados, será necessário chamar a classe 'AudioFactory' com o método, já que os métodos simplificados são estaticos, não há necessidade de instanciar a classe 'AudioFactory' para tal.
+
+5) Para encontrarmos a classes específica utilizamos um switch com o padrão factory com base no nome do arquivo.
