@@ -2,7 +2,9 @@ package trabalho.factory;
 
 import java.security.InvalidParameterException;
 
+import trabalho.classes.AACPlayerFormatoAudio;
 import trabalho.classes.AiffFormatoAudio;
+import trabalho.classes.MP3DJFormatoAudio;
 import trabalho.classes.WavFormatoAudio;
 import trabalho.classes.WmaFormatoAudio;
 import trabalho.interfaces.FormatoAudio;
@@ -26,6 +28,12 @@ public class AudioFactory {
 				break;
 			case "wma":
 				audio = new WmaFormatoAudio();
+			break;
+			case "mp3":
+				audio = new MP3DJFormatoAudio();
+			break;
+			case "aac":
+				audio = new AACPlayerFormatoAudio();
 			break;
 			default:
 				throw new InvalidParameterException("Formato de arquivo inválido.");
