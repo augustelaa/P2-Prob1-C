@@ -1,0 +1,9 @@
+Factory:
+Utilizamos o padrão factory na classe AudioFactory.
+Basicamente temos um switch que desempenha o papel de criar o construtor apropriado para o formato usando como handler a interface pai de todas as demais (FormatoAudio).
+
+Adapter:
+Utilizamos o padrão adapter para realizar as chamadas dos métodos de forma unificada, tendo como origem as classes MP3DJFormatoAudio, WavFormatoAudio... e destino as classes MP3DJ, WAVPlayer....
+
+Façade:
+Utilizamos um façade para simplificar os metodos das classes que não possuem os metodos nativamente, como por exemplo a classe MP3DJ, ela não possue um método para parar, apenas para pausar, sendo assim criamos um metodo na classe MP3DJFormatoAudio que desempenha o papel de parar usando os metodos stop e setFile da classe MP3DJ.
