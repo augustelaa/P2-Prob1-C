@@ -7,3 +7,20 @@ Utilizamos o padrão adapter para realizar as chamadas dos métodos de forma uni
 
 Façade:
 Utilizamos um façade para simplificar os metodos das classes que não possuem os metodos nativamente, como por exemplo a classe MP3DJ, ela não possue um método para parar, apenas para pausar, sendo assim criamos um metodo na classe MP3DJFormatoAudio que desempenha o papel de parar usando os metodos stop e setFile da classe MP3DJ.
+
++-*+-*+-*+-*+-*+-*+-*+-*
+Observações do Professor:
+- a Factory AudioFactory deveria retornar um objeto de FormatoAudio e não ser a base para tocar (player) os formatos de áudio.
+AudioFactory playerWMA = new AudioFactory("musica.wma");
+playerWMA.getAudio().reproduzir();
+playerWMA.getAudio().parar();
+deveria ser:
+AudioFactory fabrica = new AudioFactory();
+FormatoAudio player = fabrica.getInstance("musica.wma");
+player.reproduzir()
+player.parar();
+
+- Façade visa simplificar o uso de um subsistema. A explicação dada sobre MP3DJ apresenta a adaptação feita (Adapter) e não a criação de uma fachada de simplificação. 
+- a implementação de Façade deveria ocorrer em uma nova classe, única para todos os formatos de áudio e apenas oferecendo os métodos simplificados e não como parte de AudioFactory (que é a implementação do padrão Factory)
+
+Nota (0-3):2,3
